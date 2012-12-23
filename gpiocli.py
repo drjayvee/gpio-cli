@@ -11,6 +11,9 @@ class GPIOCLI:
 		GPIO.setmode(GPIO.BOARD)
 		GPIO.setup(pinId, GPIO.OUT)
 
+	def __del__(self):
+		GPIO.cleanup()
+
 	def setOutLow(self):
 		GPIO.output(self.pinId, GPIO.LOW)
 
