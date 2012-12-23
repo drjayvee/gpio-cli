@@ -21,3 +21,6 @@ sudo python gpiocli.py cleanup
     import subprocess
     subprocess.check_call(["sudo", "python", "gpiocli.py", "13", "HIGH"])
 
+## Why use sudo?
+It's tempting to [use setuid](http://www.tuxation.com/setuid-on-shell-scripts.html) to make the module executable and run as root.
+However, that [doesn't work](http://stackoverflow.com/a/8314858)!
