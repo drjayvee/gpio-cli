@@ -12,11 +12,9 @@ class GPIOCLI:
 		GPIO.setup(pinId, GPIO.OUT)
 
 	def setOutLow(self):
-#		print "Setting", self.pinId, "low"
 		GPIO.output(self.pinId, GPIO.LOW)
 
 	def setOutHigh(self):
-#		print "Setting", self.pinId, "high"
 		GPIO.output(self.pinId, GPIO.HIGH)
 
 def printHelp():
@@ -41,7 +39,6 @@ if __name__ == '__main__':
 		exit()
 
 	# set pin id
-#	print "pin id", argv[1]
 	gpiocli = GPIOCLI(
 		int(sys.argv[1]),							# PinID
 		len(sys.argv) == 4 and sys.argv[3] == "-q"  # optional -q flag
