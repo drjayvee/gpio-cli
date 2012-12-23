@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 import sys
 
 class GPIOCLI:
-	def __init__(self, pinId, cleanUpOnExit=True, verbose=False, quiet=False):
+	def __init__(self, pinId, cleanUpOnExit=False, verbose=False, quiet=False):
 		self.pinId = pinId
 		self.cleanUp = cleanUpOnExit
 		self.verbose = verbose
@@ -35,9 +35,14 @@ class GPIOCLI:
 
 def printHelp():
 	print """
-	GPIO-CLI usage:
+	GPIO cli usage:
 		gpiocli.py	cleanup
-		gpiocli.py	PinID (HIGH|LOW) [-n|--no-cleanup] [-q|--quiet] [-v|--verbose]
+		gpiocli.py	PinID (HIGH|LOW) [-c|--cleanup] [-q|--quiet] [-v|--verbose]
+
+	Options:
+		-c|--cleanup	Cleanup before exit (settings will be reset)
+		-q|--quiet		Suppress GPIO warnings
+		-v|--verbose	do tell what's going on (duh)
 	"""
 
 if __name__ == '__main__':
@@ -62,12 +67,12 @@ if __name__ == '__main__':
 		printHelp()
 		exit(1)
 
-	cleanUp = True
+	cleanUp = False
 	verbose = False
 	quiet = False
 	for arg in sys.argv[3:]:
-		if arg == "-n" or arg == "--no-cleanup":
-			cleanUp = False
+		if arg == "-c" or arg == "--cleanup":
+			cleanUp = True
 		elif arg == "-q" or arg == "--quiet":
 			quiet = True
 		elif arg == "-v" or arg == "--verbose":
