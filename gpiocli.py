@@ -44,9 +44,10 @@ if __name__ == '__main__':
 		len(sys.argv) == 4 and sys.argv[3] == "-q"  # optional -q flag
 	)
 
-	if sys.argv[2] == "HIGH":
+	setting = sys.argv[2].lower()
+	if setting == "high":
 		gpiocli.setOutHigh()
-	elif sys.argv[2] == "LOW":
+	elif setting == "low":
 		gpiocli.setOutLow()
 	else:
 		print "Invalid setting"
