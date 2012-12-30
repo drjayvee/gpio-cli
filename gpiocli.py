@@ -41,7 +41,7 @@ def printHelp():
 
 	Options:
 		-c|--cleanup	Cleanup before exit (settings will be reset)
-		-q|--quiet		Suppress GPIO warnings
+		-q|--quiet	Suppress GPIO warnings
 		-v|--verbose	do tell what's going on (duh)
 	"""
 
