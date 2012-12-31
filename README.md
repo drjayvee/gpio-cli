@@ -10,16 +10,20 @@ But that doesn't mean your whole python program needs to be run as root. This py
 
 ## Using GPIO from shell
 ```
-# Set pin 13 to HIGH, then LOw
-sudo python gpiocli.py 13 HIGH
-sudo python gpiocli.py 13 LOW
+# Set pin 13 to HIGH, get its value, then set to LOW
+sudo python gpiocli.py set 13 HIGH
+sudo python gpiocli.py get 13
+sudo python gpiocli.py set 13 LOW -q -v
 sudo python gpiocli.py cleanup
 ```
 
 ## Using it from python
 
     import subprocess
-    subprocess.check_call(["sudo", "python", "gpiocli.py", "13", "HIGH"])
+    subprocess.check_call(["sudo", "python", "gpiocli.py", "set", "13", "HIGH"])
+    subprocess.check_call(["sudo", "python", "gpiocli.py", "get", "13"])
+    # alternatively, depending on your shell environment
+    subprocess.check_call(["sudo python gpiocli.py get 13"], shell=True)
 
 ## Why use sudo?
 It's tempting to [use setuid](http://www.tuxation.com/setuid-on-shell-scripts.html) to make the module executable and run as root.
